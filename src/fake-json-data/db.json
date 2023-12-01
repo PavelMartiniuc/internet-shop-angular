@@ -1,8 +1,40 @@
 {
-    "employee":  [
+    "products":  [
         {
-            "name": "Pavel",
-            "age": 41
+            "id": 1,
+            "title": "Macbook Air",
+            "price": 900,
+            "image": "assets/images/macbook.png",
+            "configuration" : {
+                "chip": "M1",
+                "SSD": "255 GB",
+                "memory": "16 GB",
+                "display": "Retina"
+            }
+        },
+        {
+            "id": 2,
+            "title": "Macbook Pro",
+            "price": 1000,
+            "image": "assets/images/macbook.png",
+            "configuration" : {
+                "chip": "M1",
+                "SSD": "500 GB",
+                "memory": "16 GB",
+                "display": "Retina"
+            }
+        },
+        {
+            "id": 3,
+            "title": "Macbook Pro (Intel)",
+            "price": 1300,
+            "image": "assets/images/macbook.png",
+            "configuration" : {
+                "chip": "M1",
+                "SSD": "1000 GB",
+                "memory": "32 GB",
+                "display": "Retina"
+            }
         }
     ]
 }
