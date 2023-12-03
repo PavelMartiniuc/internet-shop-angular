@@ -1,1 +1,18 @@
-<p>product-details works!</p>
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img class="image" mat-card-image src="{{product.image}}" >
+          <p>Цена: {{product.price | currency}}</p>
+          <p>Год: {{product.year }}</p>
+          <p>Чип: {{product.configuration.chip }}</p>
+          <p>SSD: {{product.configuration.ssd }}</p>
+          <p>Memory: {{product.configuration.memory }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>В корзину</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

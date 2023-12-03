@@ -7,5 +7,5 @@ export interface IProduct {
     year: number,
     image?: string;
 
-    configuratoin: IProducConfiguration
+    configuration: IProducConfiguration
 }
