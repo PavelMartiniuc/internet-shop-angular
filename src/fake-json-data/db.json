@@ -4,6 +4,7 @@
             "id": 1,
             "title": "Macbook Air",
             "price": 900,
+            "year": 2023,
             "image": "assets/images/macbook.png",
             "configuration" : {
                 "chip": "M1",
@@ -17,6 +18,7 @@
             "title": "Macbook Pro",
             "price": 1000,
             "image": "assets/images/macbook.png",
+            "year": 2022,
             "configuration" : {
                 "chip": "M1",
                 "SSD": "500 GB",
@@ -28,6 +30,7 @@
             "id": 3,
             "title": "Macbook Pro (Intel)",
             "price": 1300,
+            "year": 2020,
             "image": "assets/images/macbook.png",
             "configuration" : {
                 "chip": "M1",

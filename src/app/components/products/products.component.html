@@ -1,17 +1,17 @@
 <div class="container">
-    <mat-card class="example-card">
+    <mat-card class="example-card" *ngFor="let product of products">
         <mat-card-header>
-          <mat-card-title>Max Book</mat-card-title>
+          <mat-card-title>{{product.title}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <img class="image" mat-card-image src="../../../assets/images/macbook.png" >
-          <p>Цена: 1500</p>
-          <p>Чип: 1500</p>
+          <img class="image" mat-card-image src="{{product.image}}" >
+          <p>Цена: {{product.price | currency}}</p>
+          <p>Год: {{product.year }}</p>
           <p>Год выпуска: 2020</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button>В корзину</button>
-          <button mat-button>Подробнее</button>
+          <button mat-button [routerLink]="['/product', product.id]"  >Подробнее</button>
         </mat-card-actions>
       </mat-card>
 </div>

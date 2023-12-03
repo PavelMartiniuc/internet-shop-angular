@@ -16,6 +16,6 @@ export class ProductsService {
   }
 
   getProdcutById(id: number) {
-    return this.http.get<IProduct>(this.base_url);
+    return this.http.get<IProduct>(`${this.base_url}/${id}`);
   }
 }
