@@ -1,7 +1,7 @@
 import { IProducConfiguration } from "./i-product-configuration";
 
 export interface IProduct {
-    id?: number,
+    id: number,
     title: string,
     price: number,
     year: number,

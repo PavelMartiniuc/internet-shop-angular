@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../models/i-product';
-import { Subscription } from 'rxjs';
+import { Subscription, findIndex } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../ui/dialog-box/dialog-box.component';
@@ -40,12 +40,27 @@ export class ProductsComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((data) => {
       if (data)
-        this.postData(data)
+        this.addProduct(data)
     });
   }
 
-  postData(data: IProduct) {
+  addProduct(data: IProduct) {
     this.productsService.addProduct(data).subscribe((data) => this.products.push(data));
   }
 
+  deleteProduct(id: number) {
+    
+    this.
+      productsService.
+      deleteProduct(id).
+      subscribe(()=> {
+        this.products.find((product) => {
+          if (id == product.id) {
+            let index = this.products.findIndex((item) => item.id == id);
+            this.products.splice(index, 1);
+          }
+        });
+      });
+
+  }
 }

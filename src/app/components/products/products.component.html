@@ -21,6 +21,12 @@
         <mat-card-actions>
           <button mat-button>В корзину</button>
           <button mat-button [routerLink]="['/product', product.id]"  >Подробнее</button>
+
+          <button mat-button [matMenuTriggerFor]="menu">Правка...</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item >Редактировать</button>
+              <button mat-menu-item (click)="deleteProduct(product.id)">Удалить</button>
+            </mat-menu>
         </mat-card-actions>
       </mat-card>
 </div>

@@ -58,6 +58,7 @@ export class DialogBoxComponent{
     console.log(this.myForm);
 
     this.productToEdit = {
+      id: 0,
       title: this.myForm.value.title,
       price: this.myForm.value.price,
       year: this.myForm.value.year,

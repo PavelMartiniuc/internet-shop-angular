@@ -51,19 +51,6 @@
         "display": "FULL HD"
       },
       "id": 4
-    },
-    {
-      "title": "",
-      "price": "",
-      "year": "",
-      "image": "assets/images/macbook.png",
-      "configuration": {
-        "chip": "",
-        "ssd": "",
-        "memory": "",
-        "display": ""
-      },
-      "id": 5
     }
   ]
 }
