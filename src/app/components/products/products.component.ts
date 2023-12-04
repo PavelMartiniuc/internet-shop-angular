@@ -5,6 +5,7 @@ import { ProductsService } from '../../services/products.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../ui/dialog-box/dialog-box.component';
 import { DialogConfig } from '@angular/cdk/dialog';
+import { IProductBasketItem } from '../../models/i-product-basket-item';
 
 @Component({
   selector: 'app-products',
@@ -13,8 +14,10 @@ import { DialogConfig } from '@angular/cdk/dialog';
 })
 export class ProductsComponent implements OnInit {
   products!: IProduct[];
+  basketProducts!: IProductBasketItem[];
   productsSubscription!: Subscription;
-  canEdit: boolean =false;
+  basketSubscription!: Subscription;
+  canEdit: boolean = false;
 
   constructor(private productsService: ProductsService, public dialog: MatDialog) {
 
@@ -23,11 +26,14 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.canEdit = true;
     this.productsSubscription = this.productsService.getProdcuts().subscribe((data) => this.products = data);
+    this.basketSubscription = this.productsService.getProductsFromBasket().subscribe((data) => this.basketProducts = data);
   }
 
   ngOnDestroy(){
     if (this.productsSubscription)
       this.productsSubscription.unsubscribe();
+    if (this.basketSubscription)
+      this.basketSubscription.unsubscribe();
   }
 
   openDialog(product?: IProduct): void {
@@ -77,5 +83,33 @@ export class ProductsComponent implements OnInit {
         });
       });
 
+  }
+
+  addToBasket(product: IProduct) {
+    let productBasketItem = product as IProductBasketItem;
+
+    if (this.basketProducts.length > 0) {
+      let findBasketItem = this.basketProducts.find((item) => item.id == product.id );
+      if (findBasketItem)
+        this.updateBasketItem(findBasketItem);
+      else
+        this.addBasketItem(productBasketItem);
+    }
+    else
+      this.addBasketItem(productBasketItem);
+  }
+
+  addBasketItem(productBasketItem: IProductBasketItem) {
+    productBasketItem.quantity = 1;
+    this.productsService.addProductToBasket(productBasketItem).subscribe((data) => this.basketProducts.push(data));
+  }
+
+  updateBasketItem(productBasketItem: IProductBasketItem) {
+    productBasketItem.quantity += 1;
+    this.productsService.updateProductBasketItem(productBasketItem).subscribe((data) =>{ 
+      let findBasketItem = this.basketProducts.find((item) => item.id == data.id );
+      if (findBasketItem)
+        findBasketItem.quantity = productBasketItem.quantity;
+    });
   }
 }

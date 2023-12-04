@@ -1,0 +1,41 @@
+.container {
+    margin: 0 auton 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.example-card {
+    background-color: azure;
+    margin-left: 10px;
+}
+
+mat-card-header {
+    background-color: rgb(101, 51, 145);
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+}
+  
+mat-card-title {
+ color: white;
+}
+
+mat-card-content p {
+    color: black;
+    margin: 0px;
+}
+
+mat-card-actions button {
+    background-color: rgb(101, 51, 145);
+    margin-right: 5px;;
+}
+
+.image {
+    max-width: 250px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}

@@ -11,7 +11,8 @@
         "ssd": "255 GB",
         "memory": "16 GB",
         "display": "Retina"
-      }
+      },
+      "quantity": 5
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
         "ssd": "500 GB",
         "memory": "16 GB",
         "display": "Hello"
-      }
+      },
+      "quantity": -2
     },
     {
       "id": 3,
@@ -51,6 +53,22 @@
         "memory": "33",
         "display": "FULL HD 2"
       }
+    }
+  ],
+  "basket": [
+    {
+      "id": 1,
+      "title": "Macbook Air",
+      "price": "920",
+      "year": 2023,
+      "image": "assets/images/macbook.png",
+      "configuration": {
+        "chip": "M15",
+        "ssd": "255 GB",
+        "memory": "16 GB",
+        "display": "Retina"
+      },
+      "quantity": 4
     }
   ]
 }

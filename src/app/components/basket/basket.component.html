@@ -1,1 +1,22 @@
-<p>basket works!</p>
+<div class="container">
+    <mat-card class="example-card" *ngFor="let basketProduct of products">
+        <mat-card-header>
+          <mat-card-title>{{basketProduct.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img class="image" mat-card-image src="{{basketProduct.image}}" >
+          <p>Цена: {{basketProduct.price | currency}}</p>
+          <p>Год: {{basketProduct.year }}</p>
+          <p>Чип: {{basketProduct.configuration.chip }}</p>
+          <p>SSD: {{basketProduct.configuration.ssd }}</p>
+          <p>Память: {{basketProduct.configuration.memory }}</p>
+          <p>Экран: {{basketProduct.configuration.display }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+        
+         <button mat-button (click)="addItemToBasket(basketProduct)">+</button>
+         <span>Количество: {{basketProduct.quantity}}</span>
+         <button mat-button style="margin-left: 5px;" (click)="substractItemFromBasket(basketProduct)">-</button>
+        </mat-card-actions>
+      </mat-card>
+</div>
