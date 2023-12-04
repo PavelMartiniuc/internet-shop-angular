@@ -30,22 +30,37 @@ export class ProductsComponent implements OnInit {
       this.productsSubscription.unsubscribe();
   }
 
-  openDialog(): void {
+  openDialog(product?: IProduct): void {
     let dialogConfig = new MatDialogConfig();
     
     dialogConfig.width = "700px";
-    dialogConfig.data = 123;
+    dialogConfig.data = product;
     dialogConfig.disableClose= true;
 
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((data) => {
-      if (data)
-        this.addProduct(data)
+      if (data) {
+        if (data.id)
+          this.updateProduct(data);
+        else  
+          this.addProduct(data);
+      }
     });
   }
 
   addProduct(data: IProduct) {
     this.productsService.addProduct(data).subscribe((data) => this.products.push(data));
+  }
+
+  updateProduct(product: IProduct) {
+    this.productsService.updateProduct(product).subscribe((data) => {
+      this.products = this.products.map((currentProduct) => {
+        if (currentProduct.id == data.id)
+          return data;
+        else
+          return currentProduct;
+      });
+    });
   }
 
   deleteProduct(id: number) {

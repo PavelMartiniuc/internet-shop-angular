@@ -3,12 +3,12 @@
     {
       "id": 1,
       "title": "Macbook Air",
-      "price": 900,
+      "price": "920",
       "year": 2023,
       "image": "assets/images/macbook.png",
       "configuration": {
-        "chip": "M1",
-        "SSD": "255 GB",
+        "chip": "M15",
+        "ssd": "255 GB",
         "memory": "16 GB",
         "display": "Retina"
       }
@@ -17,13 +17,13 @@
       "id": 2,
       "title": "Macbook Pro",
       "price": 1000,
-      "image": "assets/images/macbook.png",
       "year": 2022,
+      "image": "assets/images/macbook.png",
       "configuration": {
         "chip": "M1",
-        "SSD": "500 GB",
+        "ssd": "500 GB",
         "memory": "16 GB",
-        "display": "Retina"
+        "display": "Hello"
       }
     },
     {
@@ -34,23 +34,23 @@
       "image": "assets/images/macbook.png",
       "configuration": {
         "chip": "M1",
-        "SSD": "1000 GB",
+        "ssd": "1000 GB",
         "memory": "32 GB",
         "display": "Retina"
       }
     },
     {
+      "id": 4,
       "title": "Iphone",
       "price": "3000",
-      "year": "2024",
+      "year": "2026",
       "image": "assets/images/macbook.png",
       "configuration": {
         "chip": "M5",
         "ssd": "2TB",
-        "memory": "32",
-        "display": "FULL HD"
-      },
-      "id": 4
+        "memory": "33",
+        "display": "FULL HD 2"
+      }
     }
   ]
 }

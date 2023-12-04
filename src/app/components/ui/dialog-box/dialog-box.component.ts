@@ -34,21 +34,28 @@ import { IProduct } from '../../../models/i-product';
 export class DialogBoxComponent{
 
   myForm: FormGroup = new FormGroup({
-    title: new FormControl(''),
-    price: new FormControl(''),
-    year: new FormControl(''),
-    chip: new FormControl(''),
-    ssd: new FormControl(''),
-    memory: new FormControl(''),
-    display: new FormControl(''),
+    id: new FormControl(this.data?.id ?? null),
+    title: new FormControl(this.data?.title ?? null),
+    price: new FormControl(this.data?.price ?? null),
+    year: new FormControl(this.data?.year ?? null),
+    chip: new FormControl(this.data?.configuration.chip ?? null),
+    ssd: new FormControl(this.data?.configuration.ssd ?? null),
+    memory: new FormControl(this.data?.configuration.memory ?? null),
+    display: new FormControl(this.data?.configuration.display ?? null),
   });
 
   productToEdit!: IProduct;
 
+  isNewProduct: boolean = true;
+
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
+  ) {
+      if (this.data)
+        this.isNewProduct = false;
+
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -58,7 +65,7 @@ export class DialogBoxComponent{
     console.log(this.myForm);
 
     this.productToEdit = {
-      id: 0,
+      id: this.myForm.value.id,
       title: this.myForm.value.title,
       price: this.myForm.value.price,
       year: this.myForm.value.year,

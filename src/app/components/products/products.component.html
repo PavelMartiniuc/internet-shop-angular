@@ -24,7 +24,7 @@
 
           <button mat-button [matMenuTriggerFor]="menu">Правка...</button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item >Редактировать</button>
+              <button mat-menu-item (click)="openDialog(product)" >Редактировать</button>
               <button mat-menu-item (click)="deleteProduct(product.id)">Удалить</button>
             </mat-menu>
         </mat-card-actions>
