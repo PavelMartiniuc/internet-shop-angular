@@ -18,4 +18,8 @@ export class ProductsService {
   getProdcutById(id: number) {
     return this.http.get<IProduct>(`${this.base_url}/${id}`);
   }
+
+  addProduct(product: IProduct) {
+    return this.http.post<IProduct>(this.base_url, product)
+  }
 }
