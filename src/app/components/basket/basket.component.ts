@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../../models/i-product';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { IProductBasketItem } from '../../models/i-product-basket-item';
+import { ArrayHelper } from '../../infrastructure/helpers/array-helper';
 
 @Component({
   selector: 'app-basket',
@@ -32,7 +32,6 @@ export class BasketComponent implements OnInit {
   addItemToBasket(item: IProductBasketItem) {
     item.quantity += 1;
     this.productService.updateProductBasketItem(item).subscribe((data) => {
-      
     });
   }
 
@@ -40,16 +39,10 @@ export class BasketComponent implements OnInit {
     item.quantity-=1;
     if (item.quantity == 0)
       this.productService.deleteProductFromBasket(item.id).subscribe((data) => {
-        this.products.find((product) => {
-          if (item.id == product.id) {
-            let index = this.products.findIndex((product) => product.id == item.id);
-            this.products.splice(index, 1);
-          }
-        });
+        ArrayHelper.RemoveElement(this.products, item);
       });
     else      
       this.productService.updateProductBasketItem(item).subscribe((data) => {
-      
       });
   }
 

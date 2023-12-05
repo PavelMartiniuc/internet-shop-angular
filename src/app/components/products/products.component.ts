@@ -4,7 +4,7 @@ import { Subscription, findIndex } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../ui/dialog-box/dialog-box.component';
-import { DialogConfig } from '@angular/cdk/dialog';
+import { ArrayHelper } from '../../infrastructure/helpers/array-helper';
 import { IProductBasketItem } from '../../models/i-product-basket-item';
 
 @Component({
@@ -74,13 +74,8 @@ export class ProductsComponent implements OnInit {
     this.
       productsService.
       deleteProduct(id).
-      subscribe(()=> {
-        this.products.find((product) => {
-          if (id == product.id) {
-            let index = this.products.findIndex((item) => item.id == id);
-            this.products.splice(index, 1);
-          }
-        });
+      subscribe((data)=> {
+        ArrayHelper.RemoveElementByCondition(this.products, (element) => element.id == id);
       });
 
   }
