@@ -30,7 +30,7 @@ export class BasketComponent implements OnInit {
   }
 
   addItemToBasket(item: IProductBasketItem) {
-    item.quantity+=1;
+    item.quantity += 1;
     this.productService.updateProductBasketItem(item).subscribe((data) => {
       
     });
@@ -42,7 +42,7 @@ export class BasketComponent implements OnInit {
       this.productService.deleteProductFromBasket(item.id).subscribe((data) => {
         this.products.find((product) => {
           if (item.id == product.id) {
-            let index = this.products.findIndex((item) => item.id == item.id);
+            let index = this.products.findIndex((product) => product.id == item.id);
             this.products.splice(index, 1);
           }
         });
